@@ -6,393 +6,179 @@
 <meta name="theme-color" content="#26215C">
 <title>Couple Check-Up — Are We on the Same Page?</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --warm:#D85A30;
-    --warm-light:#FAECE7;
-    --warm-mid:#F5C4B3;
-    --cool:#185FA5;
-    --cool-light:#E6F1FB;
-    --cool-mid:#B5D4F4;
-    --purple:#26215C;
-    --purple-mid:#534AB7;
-    --text:#1a1a1a;
-    --text-soft:#5F5E5A;
-    --surface:#F8F7F4;
-    --card:#FFFFFF;
-    --border:#E0DDD6;
-    --radius:14px;
-  }
-  html{scroll-behavior:smooth}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-    background:var(--surface);
-    color:var(--text);
-    line-height:1.65;
-    min-height:100vh;
-  }
-
-  /* HEADER */
-  .hero{
-    background:linear-gradient(135deg,var(--purple) 0%,var(--purple-mid) 100%);
-    padding:48px 24px 36px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero::before{
-    content:'';position:absolute;top:-60px;left:-60px;
-    width:200px;height:200px;border-radius:50%;
-    background:var(--warm);opacity:0.12;
-  }
-  .hero::after{
-    content:'';position:absolute;bottom:-40px;right:-40px;
-    width:160px;height:160px;border-radius:50%;
-    background:var(--cool);opacity:0.15;
-  }
-  .badge{
-    display:inline-block;
-    background:rgba(255,255,255,0.15);
-    color:rgba(255,255,255,0.9);
-    font-size:12px;letter-spacing:0.08em;
-    padding:4px 12px;border-radius:20px;
-    margin-bottom:16px;
-    border:1px solid rgba(255,255,255,0.2);
-  }
-  .hero h1{
-    color:#fff;font-size:26px;font-weight:700;
-    line-height:1.25;margin-bottom:10px;
-    position:relative;z-index:1;
-  }
-  .hero p{
-    color:rgba(255,255,255,0.75);font-size:15px;
-    max-width:320px;margin:0 auto;
-    position:relative;z-index:1;
-  }
-
-  /* SPLIT TAG */
-  .split-pill{
-    display:flex;justify-content:center;gap:8px;
-    margin:24px 0 0;position:relative;z-index:1;
-  }
-  .split-pill span{
-    padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;
-  }
-  .pill-warm{background:var(--warm);color:#fff;}
-  .pill-cool{background:var(--cool);color:#fff;}
-
-  /* MAIN CONTENT */
-  .container{max-width:480px;margin:0 auto;padding:24px 16px 48px;}
-
-  /* INSTRUCTION CARD */
-  .instruction-card{
-    background:var(--card);border-radius:var(--radius);
-    border:1px solid var(--border);
-    padding:20px;margin-bottom:20px;
-  }
-  .instruction-card h2{
-    font-size:15px;font-weight:600;color:var(--text);
-    margin-bottom:12px;display:flex;align-items:center;gap:8px;
-  }
-  .step-list{counter-reset:steps;list-style:none;}
-  .step-list li{
-    counter-increment:steps;
-    display:flex;gap:12px;align-items:flex-start;
-    padding:8px 0;border-bottom:1px solid var(--border);
-  }
-  .step-list li:last-child{border-bottom:none;}
-  .step-num{
-    width:26px;height:26px;border-radius:50%;flex-shrink:0;
-    background:var(--purple);color:#fff;
-    font-size:12px;font-weight:600;
-    display:flex;align-items:center;justify-content:center;
-    margin-top:1px;
-  }
-  .step-list li p{font-size:14px;color:var(--text-soft);line-height:1.55;}
-
-  /* SECTION LABEL */
-  .section-label{
-    font-size:11px;letter-spacing:0.1em;font-weight:600;
-    color:var(--text-soft);text-transform:uppercase;
-    margin:28px 0 12px;padding-left:4px;
-  }
-
-  /* QUESTION CARDS */
-  .q-card{
-    background:var(--card);border-radius:var(--radius);
-    border:1px solid var(--border);
-    padding:18px 18px 14px;margin-bottom:12px;
-  }
-  .q-header{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
-  .q-num{
-    width:30px;height:30px;border-radius:8px;flex-shrink:0;
-    font-size:13px;font-weight:700;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .q-num.choice{background:var(--warm-light);color:var(--warm);}
-  .q-num.open{background:var(--cool-light);color:var(--cool);}
-  .q-text{font-size:15px;color:var(--text);line-height:1.5;font-weight:500;}
-
-  /* OPTION BUTTONS */
-  .options{display:flex;flex-direction:column;gap:8px;}
-  .opt{
-    border:1.5px solid var(--border);border-radius:10px;
-    padding:10px 14px;font-size:14px;color:var(--text-soft);
-    background:var(--surface);cursor:pointer;
-    text-align:left;width:100%;transition:all 0.18s;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .opt:hover,.opt:focus{border-color:var(--warm);color:var(--text);outline:none;}
-  .opt.selected{
-    background:var(--warm-light);border-color:var(--warm);
-    color:var(--warm);font-weight:500;
-  }
-
-  /* OPEN ANSWER AREA */
-  .open-hint{
-    font-size:13px;color:var(--text-soft);
-    background:var(--cool-light);border-radius:8px;
-    padding:10px 12px;border:1px solid var(--cool-mid);
-    margin-top:2px;line-height:1.5;
-  }
-
-  /* IMPORTANT NOTE */
-  .warning-box{
-    background:var(--warm-light);border:1px solid var(--warm-mid);
-    border-radius:var(--radius);padding:16px 18px;
-    margin-bottom:20px;
-  }
-  .warning-box p{font-size:14px;color:#712B13;line-height:1.55;}
-  .warning-box strong{font-weight:600;}
-
-  /* AFTER SECTION */
-  .after-card{
-    background:linear-gradient(135deg,var(--cool-light),#EDE9FD);
-    border:1px solid var(--cool-mid);border-radius:var(--radius);
-    padding:20px;margin-top:24px;
-  }
-  .after-card h3{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--purple);}
-  .after-card p{font-size:14px;color:var(--text-soft);line-height:1.55;}
-
-  /* CTA BUTTON */
-  .cta-wrap{text-align:center;margin-top:28px;}
-  .cta-btn{
-    display:inline-block;
-    background:var(--purple);color:#fff;
-    font-size:15px;font-weight:600;
-    padding:14px 28px;border-radius:50px;
-    text-decoration:none;
-    transition:opacity 0.18s;
-  }
-  .cta-btn:hover{opacity:0.88;}
-  .cta-sub{font-size:12px;color:var(--text-soft);margin-top:8px;}
-
-  /* COUNTER */
-  .progress-bar{
-    height:3px;background:var(--border);border-radius:2px;
-    margin-bottom:20px;overflow:hidden;
-  }
-  .progress-fill{
-    height:100%;width:0%;background:var(--warm);
-    border-radius:2px;transition:width 0.35s ease;
-  }
-
-  /* FOOTER */
-  footer{
-    text-align:center;padding:20px 16px 32px;
-    font-size:12px;color:var(--text-soft);
-  }
-  footer a{color:var(--purple-mid);text-decoration:none;}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--warm:#D85A30;--warm-light:#FAECE7;--warm-mid:#F5C4B3;--cool:#185FA5;--cool-light:#E6F1FB;--cool-mid:#B5D4F4;--purple:#26215C;--purple-mid:#534AB7;--text:#1a1a1a;--text-soft:#5F5E5A;--surface:#F8F7F4;--card:#FFFFFF;--border:#E0DDD6;--radius:14px}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--surface);color:var(--text);line-height:1.65;min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--purple) 0%,var(--purple-mid) 100%);padding:48px 24px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:var(--warm);opacity:0.12}
+.hero::after{content:'';position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:var(--cool);opacity:0.15}
+.badge{display:inline-block;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);font-size:12px;letter-spacing:0.08em;padding:4px 12px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,0.2)}
+.hero h1{color:#fff;font-size:26px;font-weight:700;line-height:1.25;margin-bottom:10px;position:relative;z-index:1}
+.hero p{color:rgba(255,255,255,0.75);font-size:15px;max-width:320px;margin:0 auto;position:relative;z-index:1}
+.split-pill{display:flex;justify-content:center;gap:8px;margin:24px 0 0;position:relative;z-index:1}
+.split-pill span{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.pill-warm{background:var(--warm);color:#fff}
+.pill-cool{background:var(--cool);color:#fff}
+.container{max-width:480px;margin:0 auto;padding:24px 16px 48px}
+.instruction-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:20px;margin-bottom:20px}
+.instruction-card h2{font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px}
+.step-list{counter-reset:steps;list-style:none}
+.step-list li{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border)}
+.step-list li:last-child{border-bottom:none}
+.step-num{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:var(--purple);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.step-list li p{font-size:14px;color:var(--text-soft);line-height:1.55}
+.section-label{font-size:11px;letter-spacing:0.1em;font-weight:600;color:var(--text-soft);text-transform:uppercase;margin:28px 0 12px;padding-left:4px}
+.q-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:18px 18px 14px;margin-bottom:12px}
+.q-header{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.q-num{width:30px;height:30px;border-radius:8px;flex-shrink:0;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.q-num.choice{background:var(--warm-light);color:var(--warm)}
+.q-num.open{background:var(--cool-light);color:var(--cool)}
+.q-text{font-size:15px;color:var(--text);line-height:1.5;font-weight:500}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--text-soft);background:var(--surface);cursor:pointer;text-align:left;width:100%;transition:all 0.18s;-webkit-tap-highlight-color:transparent}
+.opt:hover,.opt:focus{border-color:var(--warm);color:var(--text);outline:none}
+.opt.selected{background:var(--warm-light);border-color:var(--warm);color:var(--warm);font-weight:500}
+.open-hint{font-size:13px;color:var(--text-soft);background:var(--cool-light);border-radius:8px;padding:10px 12px;border:1px solid var(--cool-mid);margin-top:2px;line-height:1.5}
+.warning-box{background:var(--warm-light);border:1px solid var(--warm-mid);border-radius:var(--radius);padding:16px 18px;margin-bottom:20px}
+.warning-box p{font-size:14px;color:#712B13;line-height:1.55}
+.after-card{background:linear-gradient(135deg,var(--cool-light),#EDE9FD);border:1px solid var(--cool-mid);border-radius:var(--radius);padding:20px;margin-top:24px}
+.after-card h3{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--purple)}
+.after-card p{font-size:14px;color:var(--text-soft);line-height:1.55}
+.cta-wrap{text-align:center;margin-top:28px}
+.cta-btn{display:inline-block;background:var(--purple);color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:50px;text-decoration:none;transition:opacity 0.18s}
+.cta-btn:hover{opacity:0.88}
+.cta-sub{font-size:12px;color:var(--text-soft);margin-top:8px}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:var(--warm);border-radius:2px;transition:width 0.35s ease}
+footer{text-align:center;padding:20px 16px 32px;font-size:12px;color:var(--text-soft)}
+footer a{color:var(--purple-mid);text-decoration:none}
 </style>
 </head>
 <body>
-
 <div class="hero">
   <div class="badge">Couple Check-Up · text version</div>
   <h1>Are We on the Same Page?</h1>
-  <p>10 questions. Answer separately — don't share until you've both finished.</p>
+  <p>10 questions. Answer separately — don't show your answers until you've both finished.</p>
   <div class="split-pill">
     <span class="pill-warm">Partner 1</span>
     <span class="pill-cool">Partner 2</span>
   </div>
 </div>
-
 <div class="container">
-
   <div class="warning-box">
-    <p><strong>Главное правило:</strong> каждый открывает эту страницу на своём телефоне и отвечает самостоятельно. Не показывайте ответы друг другу, пока оба не закончат все 10 вопросов.</p>
+    <p><strong>Main rule:</strong> each partner opens this page on their own phone and answers independently — don't show your answers to each other until you've both finished all 10 questions.</p>
   </div>
-
   <div class="instruction-card">
     <h2>How to do it</h2>
     <ul class="step-list">
-      <li>
-        <div class="step-num">1</div>
-        <p>Каждый открывает эту страницу на своём телефоне — или копирует вопросы в заметки.</p>
-      </li>
-      <li>
-        <div class="step-num">2</div>
-        <p>Отвечаете на все 10 вопросов, не советуясь и не подглядывая в ответы партнёра.</p>
-      </li>
-      <li>
-        <div class="step-num">3</div>
-        <p>Договоритесь о моменте, когда оба готовы — и покажите ответы одновременно.</p>
-      </li>
-      <li>
-        <div class="step-num">4</div>
-        <p>Don't look for who's right. Just compare.— где совпало, где нет.</p>
-      </li>
+      <li><div class="step-num">1</div><p>Each partner opens this page on their own phone — or copies the questions into their notes app.</p></li>
+      <li><div class="step-num">2</div><p>Answer all 10 questions independently, without comparing or peeking at each other's answers.</p></li>
+      <li><div class="step-num">3</div><p>Agree on a moment when you're both done — then show your answers at the same time.</p></li>
+      <li><div class="step-num">4</div><p>Don't look for who's right. Just compare — where you matched, where you didn't.</p></li>
     </ul>
   </div>
-
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
-
+  <div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
   <div class="section-label">Part 1 — choose one option</div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num choice">1</div>
-      <div class="q-text">When did you last feel truly heard by your partner?</div>
-    </div>
+    <div class="q-header"><div class="q-num choice">1</div><div class="q-text">When did you last feel truly heard by your partner?</div></div>
     <div class="options">
-      <button class="opt" onclick="select(this,'q1')">Today or this week</button>
-      <button class="opt" onclick="select(this,'q1')">This month</button>
-      <button class="opt" onclick="select(this,'q1')">I can't remember the last time</button>
+      <button class="opt" onclick="sel(this,'q1')">Today or this week</button>
+      <button class="opt" onclick="sel(this,'q1')">This month</button>
+      <button class="opt" onclick="sel(this,'q1')">I can't remember the last time</button>
     </div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num choice">2</div>
-      <div class="q-text">Who more often notices and handles small household tasks — shopping, fixing, paying?</div>
-    </div>
+    <div class="q-header"><div class="q-num choice">2</div><div class="q-text">Who more often notices and handles the small household tasks — shopping, fixing things, paying bills?</div></div>
     <div class="options">
-      <button class="opt" onclick="select(this,'q2')">Я</button>
-      <button class="opt" onclick="select(this,'q2')">Партнёр</button>
-      <button class="opt" onclick="select(this,'q2')">Примерно поровну</button>
+      <button class="opt" onclick="sel(this,'q2')">Me</button>
+      <button class="opt" onclick="sel(this,'q2')">My partner</button>
+      <button class="opt" onclick="sel(this,'q2')">Roughly equal</button>
     </div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num choice">3</div>
-      <div class="q-text">How does your last argument usually end?</div>
-    </div>
+    <div class="q-header"><div class="q-num choice">3</div><div class="q-text">How does your last argument usually end?</div></div>
     <div class="options">
-      <button class="opt" onclick="select(this,'q3')">Someone apologizes first</button>
-      <button class="opt" onclick="select(this,'q3')">It just fades out</button>
-      <button class="opt" onclick="select(this,'q3')">We talk it through completely</button>
+      <button class="opt" onclick="sel(this,'q3')">Someone apologizes first</button>
+      <button class="opt" onclick="sel(this,'q3')">It just fades out on its own</button>
+      <button class="opt" onclick="sel(this,'q3')">We talk it through completely</button>
     </div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num choice">4</div>
-      <div class="q-text">How long do you need to cool down after a conflict?</div>
-    </div>
+    <div class="q-header"><div class="q-num choice">4</div><div class="q-text">How long do you usually need to cool down after a conflict?</div></div>
     <div class="options">
-      <button class="opt" onclick="select(this,'q4')">Less than an hour</button>
-      <button class="opt" onclick="select(this,'q4')">By the end of the day</button>
-      <button class="opt" onclick="select(this,'q4')">More than a day</button>
+      <button class="opt" onclick="sel(this,'q4')">Less than an hour</button>
+      <button class="opt" onclick="sel(this,'q4')">By the end of the day</button>
+      <button class="opt" onclick="sel(this,'q4')">More than a day</button>
     </div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num choice">5</div>
-      <div class="q-text">Do you express your feelings directly, or wait for your partner to figure it out?</div>
-    </div>
+    <div class="q-header"><div class="q-num choice">5</div><div class="q-text">Do you more often express your feelings directly, or wait for your partner to figure it out?</div></div>
     <div class="options">
-      <button class="opt" onclick="select(this,'q5')">I say it directly</button>
-      <button class="opt" onclick="select(this,'q5')">I wait for them to figure it out</button>
+      <button class="opt" onclick="sel(this,'q5')">I say it directly</button>
+      <button class="opt" onclick="sel(this,'q5')">I wait for them to figure it out</button>
     </div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num choice">6</div>
-      <div class="q-text">Does your partner notice when you need support — without you saying it?</div>
-    </div>
+    <div class="q-header"><div class="q-num choice">6</div><div class="q-text">Does your partner notice when you need support — without you having to say it?</div></div>
     <div class="options">
-      <button class="opt" onclick="select(this,'q6')">Yes, almost always</button>
-      <button class="opt" onclick="select(this,'q6')">Sometimes</button>
-      <button class="opt" onclick="select(this,'q6')">Редко</button>
+      <button class="opt" onclick="sel(this,'q6')">Yes, almost always</button>
+      <button class="opt" onclick="sel(this,'q6')">Sometimes</button>
+      <button class="opt" onclick="sel(this,'q6')">Rarely</button>
     </div>
   </div>
 
   <div class="section-label">Part 2 — write your answers in your notes app</div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num open">7</div>
-      <div class="q-text">В чём, по-вашему, самый большой вклад партнёра в отношения?</div>
-    </div>
-    <div class="open-hint">Запишите одним предложением в заметки на телефоне — и не показывайте, пока партнёр не ответит тоже.</div>
+    <div class="q-header"><div class="q-num open">7</div><div class="q-text">What do you think is your partner's greatest contribution to this relationship?</div></div>
+    <div class="open-hint">Write one sentence in your notes — and don't show it until your partner has answered too.</div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num open">8</div>
-      <div class="q-text">What do you argue about most often — in one phrase?</div>
-    </div>
+    <div class="q-header"><div class="q-num open">8</div><div class="q-text">What do you argue about most often — in one phrase?</div></div>
     <div class="open-hint">Write it in your notes.</div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num open">9</div>
-      <div class="q-text">Что партнёр делает, что вы считаете заботой — а он(а), возможно, об этом не задумывается?</div>
-    </div>
+    <div class="q-header"><div class="q-num open">9</div><div class="q-text">What does your partner do that you see as care — that they might not even think of as care?</div></div>
     <div class="open-hint">Write it in your notes.</div>
   </div>
 
   <div class="q-card">
-    <div class="q-header">
-      <div class="q-num open">10</div>
-      <div class="q-text">Какую одну привычку в вашем общении вы бы изменили?</div>
-    </div>
+    <div class="q-header"><div class="q-num open">10</div><div class="q-text">If you could change one communication habit between you — what would it be?</div></div>
     <div class="open-hint">Write it in your notes.</div>
   </div>
 
   <div class="after-card">
     <h3>After you've both finished</h3>
-    <p>Не ищите, кто прав. Если по первым шести вопросам совпало четыре и больше — у вас уже хорошая база. Если меньше — это не тревожный знак. Это просто разговор, который стоило начать раньше.</p>
-    <p style="margin-top:10px;">Открытые ответы (вопросы 7–10) сравните вслух — без оценок, просто с интересом.</p>
+    <p>Don't look for who's right. If questions 1–6 matched 4 or more times — you have a solid foundation. Fewer matches isn't a red flag — it's just a conversation that was overdue.</p>
+    <p style="margin-top:10px">Compare questions 7–10 out loud — without judgment, just with curiosity.</p>
   </div>
 
   <div class="cta-wrap">
-    <a href="https://t.me/checkup_official_bot" class="cta-btn">Take it with auto-matching in the bot</a>
+    <a href="https://t.me/checkup_official_bot?start=q1_en" class="cta-btn">Take it with auto-matching in the bot</a>
     <p class="cta-sub">The bot compares answers automatically and reminds you in 7 days</p>
   </div>
-
 </div>
-
 <footer>
-  <p>Канал <a href="https://t.me/checkup_official_bot">«Чек-ап пары»</a> · Это не терапия, а структура для разговора.</p>
+  <p>Couple Check-Up channel · This is not therapy — it's a structure for a conversation.</p>
 </footer>
-
 <script>
-var counts={};
-function select(btn,q){
+var c={};
+function sel(btn,q){
   var opts=btn.closest('.options').querySelectorAll('.opt');
-  var wasSelected=btn.classList.contains('selected');
-  opts.forEach(function(o){o.classList.remove('selected');});
-  if(!wasSelected){
-    btn.classList.add('selected');
-    counts[q]=1;
-  } else {
-    delete counts[q];
-  }
-  updateProgress();
-}
-function updateProgress(){
-  var answered=Object.keys(counts).length;
-  var pct=Math.round((answered/6)*100);
-  document.getElementById('progressFill').style.width=pct+'%';
+  var was=btn.classList.contains('selected');
+  opts.forEach(function(o){o.classList.remove('selected')});
+  if(!was){btn.classList.add('selected');c[q]=1;}else{delete c[q];}
+  document.getElementById('pf').style.width=Math.round(Object.keys(c).length/6*100)+'%';
 }
 </script>
-
 </body>
 </html>
