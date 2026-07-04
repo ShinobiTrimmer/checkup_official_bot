@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#26215C">
+<title>Чек-ап пары №3 — После ссоры</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--w:#D85A30;--wl:#FAECE7;--wm:#F5C4B3;--c:#185FA5;--cl:#E6F1FB;--cm:#B5D4F4;--p:#26215C;--pm:#534AB7;--t:#1a1a1a;--ts:#5F5E5A;--s:#F8F7F4;--card:#fff;--b:#E0DDD6;--r:14px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--s);color:var(--t);line-height:1.65;min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--p),var(--pm));padding:48px 24px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:var(--w);opacity:.12}
+.hero::after{content:'';position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:var(--c);opacity:.15}
+.badge{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:12px;letter-spacing:.08em;padding:4px 12px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.2)}
+.hero h1{color:#fff;font-size:22px;font-weight:700;line-height:1.3;margin-bottom:10px;position:relative;z-index:1}
+.hero p{color:rgba(255,255,255,.75);font-size:14px;max-width:320px;margin:0 auto;position:relative;z-index:1}
+.split{display:flex;justify-content:center;gap:8px;margin:20px 0 0;position:relative;z-index:1}
+.split span{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.sw{background:var(--w);color:#fff}.sc{background:var(--c);color:#fff}
+.wrap{max-width:480px;margin:0 auto;padding:20px 16px 48px}
+.warn{background:var(--wl);border:1px solid var(--wm);border-radius:var(--r);padding:14px 16px;margin-bottom:16px;font-size:14px;color:#712B13;line-height:1.55}
+.ic{background:var(--card);border-radius:var(--r);border:1px solid var(--b);padding:18px;margin-bottom:16px}
+.ic h2{font-size:14px;font-weight:600;margin-bottom:10px}
+.sl{list-style:none}
+.sl li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--b)}
+.sl li:last-child{border-bottom:none}
+.sn{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:var(--p);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sl li p{font-size:13px;color:var(--ts);line-height:1.5}
+.lbl{font-size:11px;letter-spacing:.1em;font-weight:600;color:var(--ts);text-transform:uppercase;margin:24px 0 10px;padding-left:2px}
+.qc{background:var(--card);border-radius:var(--r);border:1px solid var(--b);padding:16px;margin-bottom:10px}
+.qh{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.qn{width:28px;height:28px;border-radius:8px;flex-shrink:0;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ch{background:var(--wl);color:var(--w)}.op{background:var(--cl);color:var(--c)}
+.qt{font-size:14px;color:var(--t);line-height:1.45;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{border:1.5px solid var(--b);border-radius:9px;padding:9px 12px;font-size:13px;color:var(--ts);background:var(--s);cursor:pointer;text-align:left;width:100%;transition:all .18s;-webkit-tap-highlight-color:transparent}
+.opt:hover{border-color:var(--w);color:var(--t)}
+.opt.sel{background:var(--wl);border-color:var(--w);color:var(--w);font-weight:500}
+.hint{font-size:13px;color:var(--ts);background:var(--cl);border-radius:8px;padding:9px 12px;border:1px solid var(--cm);line-height:1.5}
+.pb{height:3px;background:var(--b);border-radius:2px;margin-bottom:16px;overflow:hidden}
+.pf{height:100%;width:0%;background:var(--w);border-radius:2px;transition:width .35s}
+.ac{background:linear-gradient(135deg,var(--cl),#EDE9FD);border:1px solid var(--cm);border-radius:var(--r);padding:18px;margin-top:20px}
+.ac h3{font-size:14px;font-weight:600;margin-bottom:8px;color:var(--p)}
+.ac p{font-size:13px;color:var(--ts);line-height:1.5}
+.cta{text-align:center;margin-top:24px}
+.btn{display:inline-block;background:var(--p);color:#fff;font-size:14px;font-weight:600;padding:13px 24px;border-radius:50px;text-decoration:none}
+.sub{font-size:11px;color:var(--ts);margin-top:6px}
+footer{text-align:center;padding:16px;font-size:12px;color:var(--ts)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="badge">Couple Check-Up #3 · text version</div>
+  <h1>After the Fight: What Happens in the First 5 Minutes?</h1>
+  <p>10 questions. Answer separately — do not show until you've both finished.</p>
+  <div class="split"><span class="sw">Partner 1</span><span class="sc">Partner 2</span></div>
+</div>
+<div class="wrap">
+  <div class="warn"><strong>Main rule:</strong> each partner opens this page on their own phone and answers independently.</div>
+  <div class="ic">
+    <h2>How to do it</h2>
+    <ul class="sl">
+      <li><div class="sn">1</div><p>Each partner opens the page on their own phone</p></li>
+      <li><div class="sn">2</div><p>Answer all 10 questions independently</p></li>
+      <li><div class="sn">3</div><p>When you're both done — show your answers at the same time</p></li>
+      <li><div class="sn">4</div><p>Don't look for who's right. Just compare.</p></li>
+    </ul>
+  </div>
+  <div class="pb"><div class="pf" id="pf"></div></div>
+  <div class="lbl">Part 1 — choose one option</div>
+
+  <div class="qc"><div class="qh"><div class="qn ch">1</div><div class="qt">How does a fight usually "end" between you?</div></div>
+  <div class="opts">
+    <button class="opt" onclick="s(this,'q1')">Someone apologizes first</button>
+    <button class="opt" onclick="s(this,'q1')">We just stop talking about it</button>
+    <button class="opt" onclick="s(this,'q1')">We talk until we actually resolve it</button>
+  </div></div>
+
+  <div class="qc"><div class="qh"><div class="qn ch">2</div><div class="qt">Who typically makes the first move toward reconciliation?</div></div>
+  <div class="opts">
+    <button class="opt" onclick="s(this,'q2')">Usually me</button>
+    <button class="opt" onclick="s(this,'q2')">Usually my partner</button>
+    <button class="opt" onclick="s(this,'q2')">Depends on the fight</button>
+  </div></div>
+
+  <div class="qc"><div class="qh"><div class="qn ch">3</div><div class="qt">After making up, do you feel like your partner actually understood you?</div></div>
+  <div class="opts">
+    <button class="opt" onclick="s(this,'q3')">Yes, almost always</button>
+    <button class="opt" onclick="s(this,'q3')">Sometimes</button>
+    <button class="opt" onclick="s(this,'q3')">Rarely — we made up but I didn't feel heard</button>
+  </div></div>
+
+  <div class="qc"><div class="qh"><div class="qn ch">4</div><div class="qt">How often do you fight about the same things?</div></div>
+  <div class="opts">
+    <button class="opt" onclick="s(this,'q4')">Almost always a new topic</button>
+    <button class="opt" onclick="s(this,'q4')">Occasionally repeats</button>
+    <button class="opt" onclick="s(this,'q4')">Same fights, over and over</button>
+  </div></div>
+
+  <div class="qc"><div class="qh"><div class="qn ch">5</div><div class="qt">What do you usually do right after a fight ends?</div></div>
+  <div class="opts">
+    <button class="opt" onclick="s(this,'q5')">I want to talk it through immediately</button>
+    <button class="opt" onclick="s(this,'q5')">I go quiet and need space</button>
+    <button class="opt" onclick="s(this,'q5')">Depends on the situation</button>
+  </div></div>
+
+  <div class="qc"><div class="qh"><div class="qn ch">6</div><div class="qt">Do you know what hurts your partner most during a fight?</div></div>
+  <div class="opts">
+    <button class="opt" onclick="s(this,'q6')">Yes, I know exactly</button>
+    <button class="opt" onclick="s(this,'q6')">I have a rough idea</button>
+    <button class="opt" onclick="s(this,'q6')">I'm not sure</button>
+  </div></div>
+
+  <div class="lbl">Part 2 — write your answers in your notes app</div>
+
+  <div class="qc"><div class="qh"><div class="qn op">7</div><div class="qt">In one sentence: what do the first five minutes after a fight usually look like between you?</div></div>
+  <div class="hint">Write honestly in your notes — not how it should be, how it actually is.</div></div>
+
+  <div class="qc"><div class="qh"><div class="qn op">8</div><div class="qt">Is there something you want to say to your partner after a fight — that you never actually say?</div></div>
+  <div class="hint">Write it in your notes — and don't show until you're both done.</div></div>
+
+  <div class="qc"><div class="qh"><div class="qn op">9</div><div class="qt">What fight has repeated most often in the last year? Name the topic in one word.</div></div>
+  <div class="hint">Write it in your notes.</div></div>
+
+  <div class="qc"><div class="qh"><div class="qn op">10</div><div class="qt">What would you want your partner to do differently in the first minutes after a conflict?</div></div>
+  <div class="hint">Write it in your notes.</div></div>
+
+  <div class="ac">
+    <h3>After you've both finished</h3>
+    <p>Compare questions 1–6 directly. Read questions 7–10 aloud to each other — without judgment, just with curiosity. Pay special attention to question 8: what each of you wanted to say but didn't.</p>
+  </div>
+  <div class="cta">
+    <a href="https://t.me/checkup_official_bot?start=q3_en" class="btn">Take it with auto-matching in the bot</a>
+    <p class="sub">The bot compares answers automatically and reminds you in 7 days</p>
+  </div>
+</div>
+<footer>Couple Check-Up · This is not therapy — it's a structure for a conversation.</footer>
+<script>var c={};function s(b,q){var o=b.closest('.opts').querySelectorAll('.opt');var w=b.classList.contains('sel');o.forEach(function(x){x.classList.remove('sel')});if(!w){b.classList.add('sel');c[q]=1;}else{delete c[q];}document.getElementById('pf').style.width=Math.round(Object.keys(c).length/6*100)+'%';}</script>
+</body></html>
