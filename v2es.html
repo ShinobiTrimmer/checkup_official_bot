@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#26215C">
+<title>Чек-ап пары №2 — ¿Quién Hace Más en Casa?</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--w:#D85A30;--wl:#FAECE7;--wm:#F5C4B3;--c:#185FA5;--cl:#E6F1FB;--cm:#B5D4F4;--p:#26215C;--pm:#534AB7;--t:#1a1a1a;--ts:#5F5E5A;--s:#F8F7F4;--card:#fff;--b:#E0DDD6;--r:14px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--s);color:var(--t);line-height:1.65;min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--p),var(--pm));padding:48px 24px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:var(--w);opacity:.12}
+.hero::after{content:'';position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:var(--c);opacity:.15}
+.badge{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:12px;letter-spacing:.08em;padding:4px 12px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.2)}
+.hero h1{color:#fff;font-size:24px;font-weight:700;line-height:1.25;margin-bottom:10px;position:relative;z-index:1}
+.hero p{color:rgba(255,255,255,.75);font-size:14px;max-width:320px;margin:0 auto;position:relative;z-index:1}
+.split{display:flex;justify-content:center;gap:8px;margin:20px 0 0;position:relative;z-index:1}
+.split span{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.sw{background:var(--w);color:#fff}.sc{background:var(--c);color:#fff}
+.wrap{max-width:480px;margin:0 auto;padding:20px 16px 48px}
+.warn{background:var(--wl);border:1px solid var(--wm);border-radius:var(--r);padding:14px 16px;margin-bottom:16px;font-size:14px;color:#712B13;line-height:1.55}
+.ic{background:var(--card);border-radius:var(--r);border:1px solid var(--b);padding:18px;margin-bottom:16px}
+.ic h2{font-size:14px;font-weight:600;margin-bottom:10px}
+.sl{list-style:none}
+.sl li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--b)}
+.sl li:last-child{border-bottom:none}
+.sn{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:var(--p);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sl li p{font-size:13px;color:var(--ts);line-height:1.5}
+.lbl{font-size:11px;letter-spacing:.1em;font-weight:600;color:var(--ts);text-transform:uppercase;margin:24px 0 10px;padding-left:2px}
+.qc{background:var(--card);border-radius:var(--r);border:1px solid var(--b);padding:16px;margin-bottom:10px}
+.qh{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.qn{width:28px;height:28px;border-radius:8px;flex-shrink:0;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.choice{background:var(--wl);color:var(--w)}.open{background:var(--cl);color:var(--c)}
+.qt{font-size:14px;color:var(--t);line-height:1.45;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{border:1.5px solid var(--b);border-radius:9px;padding:9px 12px;font-size:13px;color:var(--ts);background:var(--s);cursor:pointer;text-align:left;width:100%;transition:all .18s;-webkit-tap-highlight-color:transparent}
+.opt:hover{border-color:var(--w);color:var(--t)}
+.opt.sel{background:var(--wl);border-color:var(--w);color:var(--w);font-weight:500}
+.hint{font-size:13px;color:var(--ts);background:var(--cl);border-radius:8px;padding:9px 12px;border:1px solid var(--cm);line-height:1.5}
+.pb{height:3px;background:var(--b);border-radius:2px;margin-bottom:16px;overflow:hidden}
+.pf{height:100%;width:0%;background:var(--w);border-radius:2px;transition:width .35s}
+.ac{background:linear-gradient(135deg,var(--cl),#EDE9FD);border:1px solid var(--cm);border-radius:var(--r);padding:18px;margin-top:20px}
+.ac h3{font-size:14px;font-weight:600;margin-bottom:8px;color:var(--p)}
+.ac p{font-size:13px;color:var(--ts);line-height:1.5}
+.cta{text-align:center;margin-top:24px}
+.btn{display:inline-block;background:var(--p);color:#fff;font-size:14px;font-weight:600;padding:13px 24px;border-radius:50px;text-decoration:none}
+.sub{font-size:11px;color:var(--ts);margin-top:6px}
+footer{text-align:center;padding:16px;font-size:12px;color:var(--ts)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="badge">Check-Up de Pareja #2 · versión en texto</div>
+  <h1>¿Quién Hace Más en Casa?</h1>
+  <p>10 preguntas. Respondan por separado — no muestren hasta que los dos hayan terminado.</p>
+  <div class="split"><span class="sw">Pareja 1</span><span class="sc">Pareja 2</span></div>
+</div>
+<div class="wrap">
+  <div class="warn"><strong>Regla principal:</strong> cada uno abre la página en su propio teléfono y responde de forma independiente.</div>
+  <div class="ic">
+    <h2>Cómo hacerlo</h2>
+    <ul class="sl">
+      <li><div class="sn">1</div><p>Cada uno abre esta página en su propio teléfono</p></li>
+      <li><div class="sn">2</div><p>Respondan las 10 preguntas de forma independiente, sin mirar</p></li>
+      <li><div class="sn">3</div><p>Cuando los dos estén listos — muestren las respuestas al mismo tiempo</p></li>
+      <li><div class="sn">4</div><p>No busquen quién tiene razón. Solo comparen.</p></li>
+    </ul>
+  </div>
+  <div class="pb"><div class="pf" id="pf"></div></div>
+  <div class="lbl">Parte 1 — elige una opción</div>
+
+  <div class="qc"><div class="qh"><div class="qn choice">1</div><div class="qt">¿Cómo estimas tu propia contribución a las tareas del hogar?</div></div>
+    <div class="opts"><button class="opt" onclick="s(this,'q1')">Hago más del 60%</button><button class="opt" onclick="s(this,'q1')">Aproximadamente el 50%</button><button class="opt" onclick="s(this,'q1')">Menos del 40%</button></div></div>
+
+  <div class="qc"><div class="qh"><div class="qn choice">2</div><div class="qt">¿Quién en vuestra relación suele notar primero que algo hay que hacer — antes de que se vuelva urgente?</div></div>
+    <div class="opts"><button class="opt" onclick="s(this,'q2')">Yo</button><button class="opt" onclick="s(this,'q2')">Mi pareja</button><button class="opt" onclick="s(this,'q2')">Más o menos igual</button></div></div>
+
+  <div class="qc"><div class="qh"><div class="qn choice">3</div><div class="qt">Cuando se acaban cosas en casa — ¿quién lo nota primero?</div></div>
+    <div class="opts"><button class="opt" onclick="s(this,'q3')">Generalmente yo</button><button class="opt" onclick="s(this,'q3')">Generalmente mi pareja</button><button class="opt" onclick="s(this,'q3')">Lo notamos al mismo tiempo</button></div></div>
+
+  <div class="qc"><div class="qh"><div class="qn choice">4</div><div class="qt">¿Quién planifica y coordina más las cosas compartidas — viajes, eventos, celebraciones?</div></div>
+    <div class="opts"><button class="opt" onclick="s(this,'q4')">Yo</button><button class="opt" onclick="s(this,'q4')">Mi pareja</button><button class="opt" onclick="s(this,'q4')">Más o menos igual</button></div></div>
+
+  <div class="qc"><div class="qh"><div class="qn choice">5</div><div class="qt">Cuando tu pareja hace una tarea del hogar — ¿cómo suele ocurrir?</div></div>
+    <div class="opts"><button class="opt" onclick="s(this,'q5')">Lo nota y lo hace sin que se lo pidan</button><button class="opt" onclick="s(this,'q5')">Lo hace cuando se lo pido</button><button class="opt" onclick="s(this,'q5')">Lo hace cuando se lo pido y se lo recuerdo</button></div></div>
+
+  <div class="qc"><div class="qh"><div class="qn choice">6</div><div class="qt">¿Quién sentiría antes el malestar si la casa estuviera descuidada varios días?</div></div>
+    <div class="opts"><button class="opt" onclick="s(this,'q6')">Yo</button><button class="opt" onclick="s(this,'q6')">Mi pareja</button><button class="opt" onclick="s(this,'q6')">Aproximadamente al mismo tiempo</button></div></div>
+
+  <div class="lbl">Parte 2 — escribe tus respuestas en las notas</div>
+
+  <div class="qc"><div class="qh"><div class="qn open">7</div><div class="qt">Tres cosas que haces regularmente y que tu pareja probablemente no nota.</div></div>
+    <div class="hint">Escríbelas en tus notas — y no las muestres hasta el final.</div></div>
+
+  <div class="qc"><div class="qh"><div class="qn open">8</div><div class="qt">¿Qué responsabilidad del hogar te agota mentalmente — no físicamente, sino porque siempre recae en ti?</div></div>
+    <div class="hint">Escríbelo en tus notas.</div></div>
+
+  <div class="qc"><div class="qh"><div class="qn open">9</div><div class="qt">¿Has sentido alguna vez que gestionas el hogar en solitario, aunque tu pareja esté presente y ayude?</div></div>
+    <div class="hint">En una frase, escríbelo en tus notas.</div></div>
+
+  <div class="qc"><div class="qh"><div class="qn open">10</div><div class="qt">Una cosa que tu pareja hace de forma silenciosa y regular — y por la que nunca le has dado las gracias en voz alta.</div></div>
+    <div class="hint">Escríbelo en tus notas.</div></div>
+
+  <div class="ac">
+    <h3>Después de que los dos hayan terminado</h3>
+    <p>Sumen sus dos números de la pregunta 1. Si la suma es mayor de 100 — es normal: así funciona la memoria. Comparen las preguntas 7–10 en voz alta — sin juzgar, solo con curiosidad.</p>
+  </div>
+  <div class="cta">
+    <a href="https://t.me/checkup_official_bot?start=q2_es" class="btn">Hacerlo con conteo automático en el bot</a>
+    <p class="sub">El bot compara respuestas automáticamente y recuerda en 7 días</p>
+  </div>
+</div>
+<footer>Check-Up de Pareja · Esto no es terapia — es una estructura para una conversación.</footer>
+<script>var c={};function s(b,q){var o=b.closest('.opts').querySelectorAll('.opt');var w=b.classList.contains('sel');o.forEach(function(x){x.classList.remove('sel')});if(!w){b.classList.add('sel');c[q]=1;}else{delete c[q];}document.getElementById('pf').style.width=Math.round(Object.keys(c).length/6*100)+'%';}</script>
+</body></html>
