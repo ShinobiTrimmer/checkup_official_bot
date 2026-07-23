@@ -4,6 +4,7 @@
 Ссылки из описаний видео:
   Видео 1 RU: ?start=q1_ru   EN: ?start=q1_en   ES: ?start=q1_es
   Видео 2 RU: ?start=q2_ru   EN: ?start=q2_en   ES: ?start=q2_es
+  Видео 7 RU: ?start=q4_ru   EN: ?start=q4_en   ES: ?start=q4_es
 
 Партнёр переходит по ссылке: ?start=q1_ru-КОД
 Бот сам определяет чек-ап и язык из параметра.
@@ -178,7 +179,7 @@ UI = {
 }
 
 # ---------------------------------------------------------------------------
-# ВСЕ ВОПРОСЫ: ДВА ЧЕК-АПА × ТРИ ЯЗЫКА
+# ВСЕ ВОПРОСЫ: ТРИ ЧЕК-АПА × ТРИ ЯЗЫКА
 # ---------------------------------------------------------------------------
 ALL_QUESTIONS = {
 
@@ -259,6 +260,31 @@ ALL_QUESTIONS = {
             {"id":8,"type":"text","text":"¿Qué responsabilidad del hogar te agota mentalmente — no físicamente, sino porque siempre recae en ti?"},
             {"id":9,"type":"text","text":"En una frase: ¿has sentido alguna vez que gestionas el hogar en solitario, aunque tu pareja esté presente y ayude físicamente?"},
             {"id":10,"type":"text","text":"Nombra una cosa que tu pareja hace de forma silenciosa y regular — y por la que nunca le has dado las gracias en voz alta."},
+        ],
+    },
+
+    # ── ЧЕК-АП 4 (видео 7): «Молчание после ссоры» ──────────────────────────
+    "q4": {
+        "ru": [
+            {"id":1,"type":"choice","text":"Когда ты молчишь после конфликта — тебе физически труднее говорить, или ты осознанно выбираешь не разговаривать?","options":["Физически тяжело говорить","Осознанно выбираю молчать","По-разному, зависит от ситуации"]},
+            {"id":2,"type":"choice","text":"Через сколько времени после ссоры ты обычно готов(а) вернуться к разговору?","options":["До 10 минут","10–30 минут","Больше часа","До следующего дня"]},
+            {"id":3,"type":"choice","text":"Что тебе больше всего нужно от партнёра, пока ты молчишь?","options":["Пространство и тишина в ответ","Короткое «я рядом», без вопросов","Чтобы спросили прямо, нужно ли время"]},
+            {"id":4,"type":"choice","text":"Что тяжелее всего терпеть, когда молчит партнёр?","options":["Неизвестно, сколько это продлится","Ощущение, что я в чём-то виноват(а)","Само по себе ничего, если знаю причину"]},
+            {"id":5,"type":"choice","text":"Какая фраза от партнёра в момент твоего молчания реально помогла бы?","options":["«Я рядом, не тороплю»","«Скажи, когда сможешь говорить»","Лучше вообще ничего не говорить"]},
+        ],
+        "en": [
+            {"id":1,"type":"choice","text":"When you go quiet after a conflict — is it physically harder to speak, or a conscious choice not to talk?","options":["Physically hard to speak","A conscious choice to stay quiet","Depends on the situation"]},
+            {"id":2,"type":"choice","text":"How long after an argument are you usually ready to talk again?","options":["Under 10 minutes","10–30 minutes","More than an hour","Not until the next day"]},
+            {"id":3,"type":"choice","text":"What do you need most from your partner while you're silent?","options":["Space and silence in return","A short 'I'm here', no questions","A direct ask whether I need time"]},
+            {"id":4,"type":"choice","text":"What's hardest to sit with when your partner goes silent?","options":["Not knowing how long it will last","Feeling like I did something wrong","Nothing, as long as I understand why"]},
+            {"id":5,"type":"choice","text":"What would your partner saying actually help while you're silent?","options":["'I'm here, no rush'","'Tell me when you're ready to talk'","Better to say nothing at all"]},
+        ],
+        "es": [
+            {"id":1,"type":"choice","text":"Cuando te quedas en silencio tras un conflicto — ¿te resulta físicamente difícil hablar, o eliges conscientemente no hacerlo?","options":["Físicamente difícil hablar","Elijo conscientemente callar","Depende de la situación"]},
+            {"id":2,"type":"choice","text":"¿Cuánto tiempo después de una discusión sueles estar listo/a para retomar la conversación?","options":["Menos de 10 minutos","10–30 minutos","Más de una hora","Hasta el día siguiente"]},
+            {"id":3,"type":"choice","text":"¿Qué necesitas más de tu pareja mientras guardas silencio?","options":["Espacio y silencio de vuelta","Un breve 'estoy aquí', sin preguntas","Que pregunten directamente si necesito tiempo"]},
+            {"id":4,"type":"choice","text":"¿Qué es lo más difícil de soportar cuando tu pareja guarda silencio?","options":["No saber cuánto va a durar","Sentir que hice algo mal","Nada, si entiendo la razón"]},
+            {"id":5,"type":"choice","text":"¿Qué frase de tu pareja realmente ayudaría mientras estás en silencio?","options":["«Estoy aquí, no hay prisa»","«Dime cuándo puedas hablar»","Mejor no decir nada"]},
         ],
     },
 }
@@ -541,7 +567,9 @@ async def send_results(code):
     else: result+=t["all_match"]
     opens=[f"• {q['text']}\n   {t['partner1']}: «{ans1.get(q['id'],'—')}»\n   {t['partner2']}: «{ans2.get(q['id'],'—')}»"
            for q in text_qs]
-    result+=t["open_header"]+"\n\n".join(opens)+t["result_footer"]
+    if opens:
+        result+=t["open_header"]+"\n\n".join(opens)
+    result+=t["result_footer"]
     for uid in (u1,u2):
         try: await bot.send_message(uid,result)
         except Exception as e: log.warning(f"Не удалось отправить {uid}: {e}")
