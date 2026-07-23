@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Чек-ап пары — Молчание после ссоры</title>
+<style>
+  :root{
+    --bg:#0c121c;
+    --bg2:#121a28;
+    --card:#161f2e;
+    --border:#26314455;
+    --text:#f3f4f2;
+    --muted:#9aa4b2;
+    --gold:#c98a3e;
+    --gold-dim:#c98a3e33;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',Arial,sans-serif;
+    line-height:1.55;
+  }
+  .wrap{max-width:620px;margin:0 auto;padding:32px 20px 80px;}
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+  }
+  h1{
+    font-size:26px;
+    margin:0 0 6px;
+    font-weight:700;
+  }
+  .sub{color:var(--muted);font-size:15px;margin-bottom:28px;}
+  .hr{height:2px;width:56px;background:var(--gold);margin:18px 0 28px;border-radius:2px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 20px;
+    margin-bottom:16px;
+  }
+  .qlabel{font-size:13px;color:var(--muted);margin-bottom:8px;}
+  .qtext{font-size:17px;font-weight:600;margin-bottom:16px;}
+  .opts{display:flex;flex-direction:column;gap:10px;}
+  .opt{
+    background:var(--bg2);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:13px 16px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.15s;
+  }
+  .opt:hover{border-color:var(--gold);}
+  .opt.selected{
+    border-color:var(--gold);
+    background:var(--gold-dim);
+  }
+  button.primary{
+    width:100%;
+    background:var(--gold);
+    color:#1a1206;
+    border:none;
+    border-radius:10px;
+    padding:15px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  button.primary:disabled{opacity:.35;cursor:not-allowed;}
+  button.ghost{
+    width:100%;
+    background:transparent;
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:13px;
+    font-size:14px;
+    cursor:pointer;
+    margin-top:10px;
+  }
+  .step{display:none;}
+  .step.active{display:block;}
+  .linkbox{
+    background:var(--bg2);
+    border:1px dashed var(--gold);
+    border-radius:10px;
+    padding:14px;
+    font-size:13px;
+    word-break:break-all;
+    color:var(--muted);
+    margin-top:14px;
+  }
+  .compare-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px;
+  }
+  .compare-cell{
+    background:var(--bg2);
+    border-radius:8px;
+    padding:10px 12px;
+    font-size:14px;
+  }
+  .compare-cell.match{border:1px solid #3f9f6b88;}
+  .compare-cell.diff{border:1px solid #c9603f88;}
+  .who{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;}
+  .badge{
+    display:inline-block;
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .badge.match{background:#3f9f6b22;color:#7fd9a4;}
+  .badge.diff{background:#c9603f22;color:#e79c86;}
+  .footer-note{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:32px;
+    text-align:center;
+  }
+  a{color:var(--gold);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Чек-ап пары · Мы об одном?</div>
+  <h1>Молчание после ссоры</h1>
+  <div class="sub">5 вопросов. Отвечает каждый отдельно, честно. Ответы партнёра появятся только после того, как ответите оба.</div>
+  <div class="hr"></div>
+
+  <!-- ШАГ 0: старт -->
+  <div class="step active" id="step-start">
+    <div class="card">
+      <div class="qtext">Это тест для двоих.</div>
+      <p style="color:var(--muted);font-size:14px;">Если вы первый — просто начните. В конце получите ссылку, которую отправите партнёру. Если вы открыли ссылку от партнёра — нажмите вторую кнопку.</p>
+      <button class="primary" onclick="startFresh()">Я первый — начать тест</button>
+      <button class="ghost" onclick="document.getElementById('step-start').classList.remove('active');document.getElementById('step-quiz').classList.add('active');renderQuestion();">У меня есть ссылка от партнёра</button>
+    </div>
+  </div>
+
+  <!-- ШАГ 1: вопросы -->
+  <div class="step" id="step-quiz">
+    <div class="card">
+      <div class="qlabel" id="qcounter">Вопрос 1 из 5</div>
+      <div class="qtext" id="qtext"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+    <button class="primary" id="nextBtn" disabled onclick="nextQuestion()">Далее</button>
+  </div>
+
+  <!-- ШАГ 2: результат / ссылка -->
+  <div class="step" id="step-done">
+    <div class="card">
+      <div class="qtext">Готово. Теперь отправьте эту ссылку партнёру.</div>
+      <p style="color:var(--muted);font-size:14px;">Он пройдёт те же 5 вопросов сам — сравнение появится у него автоматически, без давления и подглядывания.</p>
+      <div class="linkbox" id="shareLink"></div>
+      <button class="primary" onclick="copyLink()">Скопировать ссылку</button>
+    </div>
+  </div>
+
+  <!-- ШАГ 3: сравнение -->
+  <div class="step" id="step-compare">
+    <div id="compareResults"></div>
+    <div class="footer-note">Это не диагноз, а повод поговорить о том, где вы совпали и где расходитесь.</div>
+  </div>
+
+  <div class="footer-note">По мотивам видео «Молчание партнёра — это тело, а не характер» · <a href="https://t.me/checkup_official_bot?start=q4_ru">Открыть в Telegram-боте</a></div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    id:"q1",
+    text:"Когда ты молчишь после конфликта — тебе физически труднее говорить, или ты осознанно выбираешь не разговаривать?",
+    opts:["Физически тяжело говорить","Осознанно выбираю молчать","По-разному, зависит от ситуации"]
+  },
+  {
+    id:"q2",
+    text:"Через сколько времени после ссоры ты обычно готов(а) вернуться к разговору?",
+    opts:["До 10 минут","10–30 минут","Больше часа","До следующего дня"]
+  },
+  {
+    id:"q3",
+    text:"Что тебе больше всего нужно от партнёра, пока ты молчишь?",
+    opts:["Пространство и тишина в ответ","Короткое «я рядом», без вопросов","Чтобы спросили прямо, нужно ли время"]
+  },
+  {
+    id:"q4",
+    text:"Что тяжелее всего терпеть, когда молчит партнёр?",
+    opts:["Неизвестно, сколько это продлится","Ощущение, что я в чём-то виноват(а)","Само по себе ничего, если знаю причину"]
+  },
+  {
+    id:"q5",
+    text:"Какая фраза от партнёра в момент твоего молчания реально помогла бы?",
+    opts:["«Я рядом, не тороплю»","«Скажи, когда сможешь говорить»","Лучше вообще ничего не говорить"]
+  }
+];
+
+let current = 0;
+let answers = [];
+let mode = "fresh"; // fresh | responding
+let partnerAnswers = null;
+
+function b64encode(obj){
+  return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
+}
+function b64decode(str){
+  try{ return JSON.parse(decodeURIComponent(escape(atob(str)))); }
+  catch(e){ return null; }
+}
+
+function getParam(name){
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+
+window.onload = function(){
+  const data = getParam("a");
+  if(data){
+    partnerAnswers = b64decode(data);
+    mode = "responding";
+  }
+};
+
+function startFresh(){
+  mode = "fresh";
+  document.getElementById('step-start').classList.remove('active');
+  document.getElementById('step-quiz').classList.add('active');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  document.getElementById('qcounter').textContent = `Вопрос ${current+1} из ${QUESTIONS.length}`;
+  document.getElementById('qtext').textContent = q.text;
+  const optsDiv = document.getElementById('opts');
+  optsDiv.innerHTML = "";
+  q.opts.forEach((opt, i)=>{
+    const el = document.createElement('div');
+    el.className = "opt";
+    el.textContent = opt;
+    el.onclick = ()=>{
+      document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+      el.classList.add('selected');
+      answers[current] = i;
+      document.getElementById('nextBtn').disabled = false;
+    };
+    if(answers[current]===i) el.classList.add('selected');
+    optsDiv.appendChild(el);
+  });
+  document.getElementById('nextBtn').disabled = (answers[current]===undefined);
+  document.getElementById('nextBtn').textContent = (current===QUESTIONS.length-1) ? "Завершить" : "Далее";
+}
+
+function nextQuestion(){
+  if(current < QUESTIONS.length-1){
+    current++;
+    renderQuestion();
+  } else {
+    finish();
+  }
+}
+
+function finish(){
+  document.getElementById('step-quiz').classList.remove('active');
+  if(mode==="fresh"){
+    const code = b64encode(answers);
+    const link = window.location.origin + window.location.pathname + "?a=" + code;
+    document.getElementById('shareLink').textContent = link;
+    document.getElementById('step-done').classList.add('active');
+  } else {
+    showComparison();
+  }
+}
+
+function copyLink(){
+  const text = document.getElementById('shareLink').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    alert("Ссылка скопирована");
+  });
+}
+
+function showComparison(){
+  document.getElementById('step-compare').classList.add('active');
+  const container = document.getElementById('compareResults');
+  container.innerHTML = "";
+  QUESTIONS.forEach((q,i)=>{
+    const myAns = answers[i];
+    const partnerAns = partnerAnswers[i];
+    const isMatch = myAns === partnerAns;
+    const card = document.createElement('div');
+    card.className = "card";
+    card.innerHTML = `
+      <span class="badge ${isMatch?'match':'diff'}">${isMatch?'Совпало':'Разошлись'}</span>
+      <div class="qtext" style="font-size:15px;">${q.text}</div>
+      <div class="compare-row">
+        <div class="compare-cell ${isMatch?'match':'diff'}">
+          <div class="who">Партнёр 1</div>${q.opts[partnerAns]}
+        </div>
+        <div class="compare-cell ${isMatch?'match':'diff'}">
+          <div class="who">Партнёр 2 (вы)</div>${q.opts[myAns]}
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+</script>
+</body>
+</html>
