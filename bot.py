@@ -5,6 +5,7 @@
   Видео 1 RU: ?start=q1_ru   EN: ?start=q1_en   ES: ?start=q1_es
   Видео 2 RU: ?start=q2_ru   EN: ?start=q2_en   ES: ?start=q2_es
   Видео 7 RU: ?start=q4_ru   EN: ?start=q4_en   ES: ?start=q4_es
+  Видео 8 RU: ?start=q5_ru   EN: ?start=q5_en   ES: ?start=q5_es
 
 Партнёр переходит по ссылке: ?start=q1_ru-КОД
 Бот сам определяет чек-ап и язык из параметра.
@@ -285,6 +286,31 @@ ALL_QUESTIONS = {
             {"id":3,"type":"choice","text":"¿Qué necesitas más de tu pareja mientras guardas silencio?","options":["Espacio y silencio de vuelta","Un breve 'estoy aquí', sin preguntas","Que pregunten directamente si necesito tiempo"]},
             {"id":4,"type":"choice","text":"¿Qué es lo más difícil de soportar cuando tu pareja guarda silencio?","options":["No saber cuánto va a durar","Sentir que hice algo mal","Nada, si entiendo la razón"]},
             {"id":5,"type":"choice","text":"¿Qué frase de tu pareja realmente ayudaría mientras estás en silencio?","options":["«Estoy aquí, no hay prisa»","«Dime cuándo puedas hablar»","Mejor no decir nada"]},
+        ],
+    },
+
+    # ── ЧЕК-АП 5 (видео 8): «Разная скорость примирения» ─────────────────────
+    "q5": {
+        "ru": [
+            {"id":1,"type":"choice","text":"Через сколько времени после серьёзной ссоры ты обычно готов(а) вести спокойный разговор?","options":["До 10 минут","10–30 минут","Больше часа","До следующего дня"]},
+            {"id":2,"type":"choice","text":"Что ты делаешь, пока ждёшь, когда партнёр будет готов?","options":["Тревожусь и додумываю","Спокойно занимаюсь своими делами","По-разному, зависит от дня"]},
+            {"id":3,"type":"choice","text":"Когда ты идёшь мириться первым(ой), а партнёр ещё не готов — что ты обычно делаешь?","options":["Обижаюсь и отступаю","Спокойно жду рядом","Пытаюсь снова через пару минут"]},
+            {"id":4,"type":"choice","text":"Что помогло бы тебе больше всего, пока ты ждёшь партнёра?","options":["Конкретный ориентир по времени","Просто знать, что меня не игнорируют","Чтобы меня не торопили с ответом"]},
+            {"id":5,"type":"choice","text":"Если партнёр подходит мириться раньше, чем ты готов(а) — что ты чувствуешь?","options":["Мягко прошу ещё немного времени","Чувствую вину и заставляю себя ответить","Раздражаюсь, что меня торопят"]},
+        ],
+        "en": [
+            {"id":1,"type":"choice","text":"How long after a serious argument are you usually ready for a calm conversation?","options":["Under 10 minutes","10–30 minutes","More than an hour","Not until the next day"]},
+            {"id":2,"type":"choice","text":"What do you do while waiting for your partner to be ready?","options":["I worry and overthink","I calmly go about my own things","Depends on the day"]},
+            {"id":3,"type":"choice","text":"When you go to make up first and your partner isn't ready yet, what do you usually do?","options":["I get hurt and back off","I wait calmly nearby","I try again a few minutes later"]},
+            {"id":4,"type":"choice","text":"What would help you most while waiting for your partner?","options":["A concrete time estimate","Just knowing I'm not being ignored","Not being rushed for a response"]},
+            {"id":5,"type":"choice","text":"If your partner comes to make up before you're ready, what do you feel?","options":["I gently ask for a bit more time","I feel guilty and force myself to respond","I get irritated at being rushed"]},
+        ],
+        "es": [
+            {"id":1,"type":"choice","text":"¿Cuánto tiempo después de una discusión seria sueles estar listo/a para una conversación tranquila?","options":["Menos de 10 minutos","10–30 minutos","Más de una hora","Hasta el día siguiente"]},
+            {"id":2,"type":"choice","text":"¿Qué haces mientras esperas a que tu pareja esté lista?","options":["Me preocupo y le doy vueltas","Me ocupo tranquilamente de mis cosas","Depende del día"]},
+            {"id":3,"type":"choice","text":"Cuando vas a reconciliarte primero y tu pareja aún no está lista, ¿qué sueles hacer?","options":["Me duele y me retiro","Espero tranquilo/a cerca","Lo intento de nuevo a los pocos minutos"]},
+            {"id":4,"type":"choice","text":"¿Qué te ayudaría más mientras esperas a tu pareja?","options":["Una referencia concreta de tiempo","Simplemente saber que no me ignoran","Que no me apuren para responder"]},
+            {"id":5,"type":"choice","text":"Si tu pareja viene a reconciliarse antes de que estés listo/a, ¿qué sientes?","options":["Pido con calma un poco más de tiempo","Me siento culpable y me obligo a responder","Me irrito porque me apuran"]},
         ],
     },
 }
