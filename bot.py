@@ -6,6 +6,9 @@
   Видео 2 RU: ?start=q2_ru   EN: ?start=q2_en   ES: ?start=q2_es
   Видео 7 RU: ?start=q4_ru   EN: ?start=q4_en   ES: ?start=q4_es
   Видео 8 RU: ?start=q5_ru   EN: ?start=q5_en   ES: ?start=q5_es
+  Видео 9 RU: ?start=q6_ru   EN: ?start=q6_en   ES: ?start=q6_es
+  Видео 10 RU: ?start=q7_ru   EN: ?start=q7_en   ES: ?start=q7_es
+  Языки любви RU: ?start=q8_ru   EN: ?start=q8_en   ES: ?start=q8_es
 
 Партнёр переходит по ссылке: ?start=q1_ru-КОД
 Бот сам определяет чек-ап и язык из параметра.
@@ -311,6 +314,81 @@ ALL_QUESTIONS = {
             {"id":3,"type":"choice","text":"Cuando vas a reconciliarte primero y tu pareja aún no está lista, ¿qué sueles hacer?","options":["Me duele y me retiro","Espero tranquilo/a cerca","Lo intento de nuevo a los pocos minutos"]},
             {"id":4,"type":"choice","text":"¿Qué te ayudaría más mientras esperas a tu pareja?","options":["Una referencia concreta de tiempo","Simplemente saber que no me ignoran","Que no me apuren para responder"]},
             {"id":5,"type":"choice","text":"Si tu pareja viene a reconciliarse antes de que estés listo/a, ¿qué sientes?","options":["Pido con calma un poco más de tiempo","Me siento culpable y me obligo a responder","Me irrito porque me apuran"]},
+        ],
+    },
+
+    # ── ЧЕК-АП 6 (видео 9): «Деньги — язык безопасности или свободы» ────────
+    "q6": {
+        "ru": [
+            {"id":1,"type":"choice","text":"Когда я думаю о деньгах, я в первую очередь думаю о защите от рисков, или о возможностях, которые они открывают?","options":["Защита от рисков","Возможности и свобода","По-разному, зависит от ситуации"]},
+            {"id":2,"type":"choice","text":"Что для меня важнее в трате партнёра — сама сумма, или то, обсудили ли её со мной заранее?","options":["Сама сумма","То, что не обсудили заранее","И то и другое одинаково важно"]},
+            {"id":3,"type":"choice","text":"Как в моей семье в детстве в целом относились к деньгам?","options":["Тревожно, с разговорами о нехватке","Спокойно, как к обычному ресурсу","По-разному в разные периоды"]},
+            {"id":4,"type":"choice","text":"Какая сумма для меня комфортна для траты партнёром без предварительного обсуждения?","options":["До 2000 рублей","До 5000–10000 рублей","Любая, если это разумно и по плану"]},
+            {"id":5,"type":"choice","text":"Что я чувствую, когда партнёр критикует мою трату?","options":["Обвинение, хочется защищаться","Тревогу партнёра за общий бюджет, хочу объяснить","По-разному, зависит от тона"]},
+        ],
+        "en": [
+            {"id":1,"type":"choice","text":"When I think about money, do I first think about protection from risk, or about the possibilities it opens up?","options":["Protection from risk","Possibilities and freedom","Depends on the situation"]},
+            {"id":2,"type":"choice","text":"What matters more to me about a partner's purchase — the amount itself, or whether it was discussed with me beforehand?","options":["The amount itself","That it wasn't discussed beforehand","Both matter equally"]},
+            {"id":3,"type":"choice","text":"How did my family generally treat money when I was growing up?","options":["Anxiously, with talk about not having enough","Calmly, as an ordinary resource","Differently at different times"]},
+            {"id":4,"type":"choice","text":"What amount am I comfortable with my partner spending without discussing it with me first?","options":["Up to roughly $20","Up to roughly $100","Any amount, if it's reasonable and planned"]},
+            {"id":5,"type":"choice","text":"What do I feel when my partner criticizes my spending?","options":["Accusation, I want to defend myself","Their anxiety about the shared budget, I want to explain","Depends on the tone"]},
+        ],
+        "es": [
+            {"id":1,"type":"choice","text":"Cuando pienso en el dinero, ¿pienso primero en la protección frente a riesgos, o en las posibilidades que abre?","options":["Protección frente a riesgos","Posibilidades y libertad","Depende de la situación"]},
+            {"id":2,"type":"choice","text":"¿Qué me importa más de un gasto de mi pareja — la cantidad en sí, o que no lo haya hablado conmigo antes?","options":["La cantidad en sí","Que no lo habló antes","Ambas cosas por igual"]},
+            {"id":3,"type":"choice","text":"¿Cómo se trataba el dinero en mi familia cuando era niño/a?","options":["Con ansiedad, hablando de que faltaba","Con calma, como un recurso normal","De forma distinta en distintas épocas"]},
+            {"id":4,"type":"choice","text":"¿Qué cantidad me resulta cómoda que mi pareja gaste sin hablarlo antes conmigo?","options":["Hasta unos 20 dólares","Hasta unos 100 dólares","Cualquier cantidad, si es razonable y planificada"]},
+            {"id":5,"type":"choice","text":"¿Qué siento cuando mi pareja critica mi gasto?","options":["Acusación, quiero defenderme","Su ansiedad por el presupuesto común, quiero explicar","Depende del tono"]},
+        ],
+    },
+
+    # ── ЧЕК-АП 7 (видео 10): «Близость — разный ритм желания» ───────────────
+    "q7": {
+        "ru": [
+            {"id":1,"type":"choice","text":"Что обычно помогает мне почувствовать настрой на близость?","options":["Сначала контакт — разговор, прикосновение","Желание приходит само по себе","По-разному, зависит от периода"]},
+            {"id":2,"type":"choice","text":"Когда партнёр проявляет инициативу, что я чувствую в первую очередь?","options":["Приглашение, без давления","Ожидание, которое нужно оправдать","Зависит от настроения и дня"]},
+            {"id":3,"type":"choice","text":"Как часто мы говорим об этой теме вслух, в спокойном состоянии, а не в момент напряжения?","options":["Часто и спокойно","Редко, только когда уже накопилось","Почти никогда"]},
+            {"id":4,"type":"choice","text":"Что я чувствую, когда партнёр говорит «не сегодня»?","options":["Спокойно принимаю, знаю, что это не про меня","Тревогу и сомнение в себе","Раздражение или обиду"]},
+            {"id":5,"type":"choice","text":"Что помогло бы мне больше всего в этой теме?","options":["Больше тёплого контакта без ожиданий","Чтобы меня не торопили и не давили","Просто говорить об этом спокойно вслух"]},
+        ],
+        "en": [
+            {"id":1,"type":"choice","text":"What usually helps me feel in the mood for intimacy?","options":["Connection first — talking, touch","Desire just shows up on its own","Depends on the period"]},
+            {"id":2,"type":"choice","text":"When my partner takes the initiative, what do I feel first?","options":["An invitation, no pressure","An expectation I need to live up to","Depends on my mood that day"]},
+            {"id":3,"type":"choice","text":"How often do we talk about this out loud, calmly, not in a moment of tension?","options":["Often, calmly","Rarely, only once it's built up","Almost never"]},
+            {"id":4,"type":"choice","text":"What do I feel when my partner says 'not tonight'?","options":["Calm, I know it's not about me","Anxiety and self-doubt","Irritation or hurt"]},
+            {"id":5,"type":"choice","text":"What would help me most with this topic?","options":["More warm contact without expectations","Not being rushed or pressured","Just being able to talk about it calmly"]},
+        ],
+        "es": [
+            {"id":1,"type":"choice","text":"¿Qué me ayuda normalmente a sentirme con ganas de intimidad?","options":["Primero el contacto — hablar, tocarnos","El deseo aparece por sí solo","Depende de la etapa"]},
+            {"id":2,"type":"choice","text":"Cuando mi pareja toma la iniciativa, ¿qué siento primero?","options":["Una invitación, sin presión","Una expectativa que debo cumplir","Depende de mi ánimo ese día"]},
+            {"id":3,"type":"choice","text":"¿Con qué frecuencia hablamos de esto en voz alta, con calma, y no en un momento de tensión?","options":["A menudo, con calma","Rara vez, solo cuando ya se acumuló","Casi nunca"]},
+            {"id":4,"type":"choice","text":"¿Qué siento cuando mi pareja dice «hoy no»?","options":["Calma, sé que no es por mí","Ansiedad y dudas sobre mí mismo/a","Irritación o dolor"]},
+            {"id":5,"type":"choice","text":"¿Qué me ayudaría más con este tema?","options":["Más contacto cálido sin expectativas","Que no me apuren ni me presionen","Poder hablarlo con calma en voz alta"]},
+        ],
+    },
+
+    # ── ЧЕК-АП 8: «Языки любви — что вы отдаёте и что реально считывает партнёр» ──
+    "q8": {
+        "ru": [
+            {"id":1,"type":"choice","text":"Что из этого списка выбило бы вас сильнее всего, если бы партнёр перестал это делать?","options":["Слова — услышать вслух, что ценят","Время — полное внимание без телефона","Помощь — партнёр берёт на себя то, что тяжело","Прикосновение — объятие без повода","Знаки внимания — небольшой жест, что о вас думали"]},
+            {"id":2,"type":"choice","text":"Что вы сами делали для партнёра чаще всего за последнюю неделю?","options":["Говорил(а) слова поддержки и признательности","Уделял(а) полное внимание, без телефона","Брал(а) на себя дела и заботы партнёра","Обнимал(а), прикасался(лась) просто так","Делал(а) небольшие знаки внимания"]},
+            {"id":3,"type":"choice","text":"Изменился ли ваш приоритет за последние пару лет — ребёнок, переезд, новая работа, усталость?","options":["Да, заметно изменился","Немного сдвинулся","Нет, всё так же, как раньше"]},
+            {"id":4,"type":"choice","text":"Как вы обычно выражаете любовь партнёру, даже не задумываясь, естественно?","options":["Словами и комплиментами","Временем и вниманием","Практической помощью и делами","Прикосновениями и объятиями","Подарками и небольшими знаками внимания"]},
+            {"id":5,"type":"choice","text":"Если бы партнёр сегодня сделал ровно то, что в вашем первом пункте — вы бы заметили сразу?","options":["Да, сразу и очень заметно","Через какое-то время","Не уверен(а), сложно сказать"]},
+        ],
+        "en": [
+            {"id":1,"type":"choice","text":"Which of these would hit you hardest if your partner stopped doing it?","options":["Words — hearing out loud that you're valued","Time — full attention, no phone","Help — partner taking on what's hard for you","Touch — a hug for no reason","Small gestures — something that shows they were thinking of you"]},
+            {"id":2,"type":"choice","text":"What did you do for your partner most often over the last week?","options":["Said supportive, appreciative words","Gave full attention, no phone","Took on chores or tasks for them","Hugged or touched them just because","Did small thoughtful gestures"]},
+            {"id":3,"type":"choice","text":"Has your priority shifted over the past couple of years — a child, a move, a new job, fatigue?","options":["Yes, noticeably","A bit","No, still the same"]},
+            {"id":4,"type":"choice","text":"How do you naturally express love to your partner, without even thinking about it?","options":["Words and compliments","Time and attention","Practical help and chores","Touch and hugs","Gifts and small gestures"]},
+            {"id":5,"type":"choice","text":"If your partner did exactly what's in your first answer today, would you notice right away?","options":["Yes, immediately and clearly","After a while","Not sure, hard to say"]},
+        ],
+        "es": [
+            {"id":1,"type":"choice","text":"¿Qué de esta lista te afectaría más si tu pareja dejara de hacerlo?","options":["Palabras — escuchar en voz alta que te valoran","Tiempo — atención plena, sin teléfono","Ayuda — que tu pareja se encargue de lo que te pesa","Contacto físico — un abrazo sin motivo","Detalles — un pequeño gesto que muestre que pensaron en ti"]},
+            {"id":2,"type":"choice","text":"¿Qué hiciste tú más a menudo por tu pareja la última semana?","options":["Dije palabras de apoyo y reconocimiento","Di atención plena, sin teléfono","Me encargué de tareas o cosas suyas","Abracé o toqué sin motivo especial","Hice pequeños gestos de detalle"]},
+            {"id":3,"type":"choice","text":"¿Ha cambiado tu prioridad en los últimos años — un hijo, una mudanza, un nuevo trabajo, cansancio?","options":["Sí, notablemente","Un poco","No, sigue igual"]},
+            {"id":4,"type":"choice","text":"¿Cómo expresas el amor a tu pareja de forma natural, sin pensarlo?","options":["Con palabras y cumplidos","Con tiempo y atención","Con ayuda práctica y tareas","Con contacto físico y abrazos","Con regalos y pequeños detalles"]},
+            {"id":5,"type":"choice","text":"Si hoy tu pareja hiciera exactamente lo que pusiste en tu primera respuesta, ¿lo notarías de inmediato?","options":["Sí, de inmediato y claramente","Después de un tiempo","No estoy seguro/a"]},
         ],
     },
 }
