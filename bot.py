@@ -9,6 +9,8 @@
   Видео 9 RU: ?start=q6_ru   EN: ?start=q6_en   ES: ?start=q6_es
   Видео 10 RU: ?start=q7_ru   EN: ?start=q7_en   ES: ?start=q7_es
   Языки любви RU: ?start=q8_ru   EN: ?start=q8_en   ES: ?start=q8_es
+  Привязанность RU: ?start=q9_ru   EN: ?start=q9_en   ES: ?start=q9_es
+  Презрение RU: ?start=q10_ru   EN: ?start=q10_en   ES: ?start=q10_es
 
 Партнёр переходит по ссылке: ?start=q1_ru-КОД
 Бот сам определяет чек-ап и язык из параметра.
@@ -389,6 +391,56 @@ ALL_QUESTIONS = {
             {"id":3,"type":"choice","text":"¿Ha cambiado tu prioridad en los últimos años — un hijo, una mudanza, un nuevo trabajo, cansancio?","options":["Sí, notablemente","Un poco","No, sigue igual"]},
             {"id":4,"type":"choice","text":"¿Cómo expresas el amor a tu pareja de forma natural, sin pensarlo?","options":["Con palabras y cumplidos","Con tiempo y atención","Con ayuda práctica y tareas","Con contacto físico y abrazos","Con regalos y pequeños detalles"]},
             {"id":5,"type":"choice","text":"Si hoy tu pareja hiciera exactamente lo que pusiste en tu primera respuesta, ¿lo notarías de inmediato?","options":["Sí, de inmediato y claramente","Después de un tiempo","No estoy seguro/a"]},
+        ],
+    },
+
+    # ── ЧЕК-АП 9: «Тревожный / избегающий тип привязанности» ─────────────────
+    "q9": {
+        "ru": [
+            {"id":1,"type":"choice","text":"Когда партнёр дольше обычного не отвечает, я начинаю прокручивать в голове, что могло пойти не так.","options":["Да","Нет","Скорее да"]},
+            {"id":2,"type":"choice","text":"Мне нужно довольно много подтверждений, что меня любят — одного «конечно люблю» надолго не хватает.","options":["Да","Нет","Скорее да"]},
+            {"id":3,"type":"choice","text":"Мне комфортнее решать сложные вещи в одиночку, даже если партнёр честно предлагает помощь.","options":["Да","Нет","Скорее да"]},
+            {"id":4,"type":"choice","text":"Когда партнёр расстроен и хочет поговорить, моя первая реакция — на секунду отойти, а не остаться полностью рядом.","options":["Да","Нет","Скорее да"]},
+            {"id":5,"type":"choice","text":"Когда отношения становятся слишком близкими слишком быстро, внутри срабатывает что-то вроде тормоза.","options":["Да","Нет","Скорее да"]},
+        ],
+        "en": [
+            {"id":1,"type":"choice","text":"When my partner takes longer than usual to respond, I start running through everything that could have gone wrong.","options":["Yes","No","Somewhat yes"]},
+            {"id":2,"type":"choice","text":"I need quite a lot of reassurance that I'm loved — one \"of course I love you\" doesn't hold me for very long.","options":["Yes","No","Somewhat yes"]},
+            {"id":3,"type":"choice","text":"I'm more comfortable working through hard things on my own, even when my partner sincerely offers to help.","options":["Yes","No","Somewhat yes"]},
+            {"id":4,"type":"choice","text":"When my partner is upset and wants to talk, my very first instinct is to step back for a second, rather than stay fully present.","options":["Yes","No","Somewhat yes"]},
+            {"id":5,"type":"choice","text":"When a relationship gets close too fast, something like a brake kicks in inside me.","options":["Yes","No","Somewhat yes"]},
+        ],
+        "es": [
+            {"id":1,"type":"choice","text":"Cuando mi pareja tarda más de lo normal en responder, empiezo a repasar mentalmente qué pudo haber salido mal.","options":["Sí","No","Más bien sí"]},
+            {"id":2,"type":"choice","text":"Necesito bastantes confirmaciones de que me quieren — un solo «claro que te quiero» no me alcanza por mucho tiempo.","options":["Sí","No","Más bien sí"]},
+            {"id":3,"type":"choice","text":"Me resulta más cómodo resolver cosas difíciles yo solo, incluso cuando mi pareja se ofrece a ayudar con sinceridad.","options":["Sí","No","Más bien sí"]},
+            {"id":4,"type":"choice","text":"Cuando mi pareja está molesta y quiere hablar, mi primer instinto es alejarme un segundo, en vez de quedarme completamente presente.","options":["Sí","No","Más bien sí"]},
+            {"id":5,"type":"choice","text":"Cuando una relación se pone demasiado cercana demasiado rápido, algo así como un freno se activa dentro de mí.","options":["Sí","No","Más bien sí"]},
+        ],
+    },
+
+    # ── ЧЕК-АП 10: «Презрение — четвёртый всадник» ───────────────────────────
+    "q10": {
+        "ru": [
+            {"id":1,"type":"choice","text":"Закатывали ли вы глаза или тяжело вздыхали, когда партнёр говорил о чём-то, что вам казалось неважным?","options":["Да","Нет","Скорее да"]},
+            {"id":2,"type":"choice","text":"Ловили ли вы себя на мысли «я бы никогда не сделал такую глупость», глядя на действия партнёра?","options":["Да","Нет","Скорее да"]},
+            {"id":3,"type":"choice","text":"После некоторых разговоров с партнёром у меня остаётся ощущение, что надо мной посмеялись, а не что меня выслушали.","options":["Да","Нет","Скорее да"]},
+            {"id":4,"type":"choice","text":"Партнёр иногда реагирует на мои слова закатыванием глаз или тяжёлым вздохом раньше, чем успевает ответить по существу.","options":["Да","Нет","Скорее да"]},
+            {"id":5,"type":"choice","text":"После некоторых разговоров мне физически хочется извиниться за то, что я вообще это поднял(а), хотя объективно я не сделал(а) ничего плохого.","options":["Да","Нет","Скорее да"]},
+        ],
+        "en": [
+            {"id":1,"type":"choice","text":"Have you rolled your eyes or sighed heavily while your partner talked about something that felt unimportant to you?","options":["Yes","No","Somewhat yes"]},
+            {"id":2,"type":"choice","text":"Have you caught yourself thinking 'I would never do something that dumb,' watching your partner's actions?","options":["Yes","No","Somewhat yes"]},
+            {"id":3,"type":"choice","text":"After some conversations with my partner, I'm left with the feeling that I was laughed at rather than listened to.","options":["Yes","No","Somewhat yes"]},
+            {"id":4,"type":"choice","text":"My partner sometimes reacts to what I'm saying with an eye-roll or a heavy sigh before responding to the actual point.","options":["Yes","No","Somewhat yes"]},
+            {"id":5,"type":"choice","text":"After some conversations, I physically want to apologize for bringing it up at all, even though I didn't do anything wrong.","options":["Yes","No","Somewhat yes"]},
+        ],
+        "es": [
+            {"id":1,"type":"choice","text":"¿Has puesto los ojos en blanco o suspirado pesadamente mientras tu pareja hablaba de algo que te parecía poco importante?","options":["Sí","No","Más bien sí"]},
+            {"id":2,"type":"choice","text":"¿Te has sorprendido pensando 'yo nunca haría algo tan tonto', al ver las acciones de tu pareja?","options":["Sí","No","Más bien sí"]},
+            {"id":3,"type":"choice","text":"Después de algunas conversaciones con mi pareja, me queda la sensación de que se rieron de mí en vez de escucharme.","options":["Sí","No","Más bien sí"]},
+            {"id":4,"type":"choice","text":"Mi pareja a veces reacciona a lo que digo con los ojos en blanco o un suspiro pesado antes de responder al punto en sí.","options":["Sí","No","Más bien sí"]},
+            {"id":5,"type":"choice","text":"Después de algunas conversaciones, físicamente quiero disculparme por haberlo mencionado, aunque objetivamente no hice nada malo.","options":["Sí","No","Más bien sí"]},
         ],
     },
 }
